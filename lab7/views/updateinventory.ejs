@@ -1,0 +1,47 @@
+<!-- updateinventory.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Inventory</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <!-- Link to external stylesheet -->
+</head>
+<body>
+  <nav class="navbar">
+    <h1>My Inventorys</h1>
+    <div class="links">
+      <a href="/">Home</a>
+      <a class="new-item-link" href="/addinventory">New Inventory</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="update">
+      <h2>Update Inventory</h2>
+      <form action="/single-inventory/<%= inventory._id %>?_method=PUT" method="POST">
+        <label>Title:</label>
+        <input type="text" value="<%= inventory.title %>" id="title" name="title" required />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" required><%= inventory.description %></textarea>
+
+        <label for="targetDate">Target Date:</label>
+        <input type="date" id="targetDate" name="targetDate" required value="<%= inventory.targetDate.toISOString().substr(0, 10) %>" />
+
+        <label>Author:</label>
+        <select name="author">
+          <option value="sami">Sami</option>
+          <option value="rami">Rami</option>
+        </select>
+
+        <label for="achieved">Achieved:</label>
+        <input type="checkbox" id="achieved" name="achieved" <% if (inventory.achieved) { %>checked<% } %> />
+
+        <button type="submit">Update Inventory</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
