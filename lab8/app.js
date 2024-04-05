@@ -53,7 +53,7 @@ app.delete("/api/contacts/:id", blogAPI.deleteContact);
 // DELETE all Contact
 app.delete("/api/contacts", blogAPI.deleteAllContacts);
 
-const PORT = 3000;
+const PORT = 4000;
 
 // Start the server
 app.listen(PORT, () => {
